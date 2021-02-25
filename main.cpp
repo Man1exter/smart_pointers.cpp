@@ -26,7 +26,7 @@
 
 using namespace std;
 
-sharedfunct(){
+sharedFunct(){
     // metoda nr.1 z funkcja make_shared..
     shared_ptr<int> ptr1 = make_shared<int>(10);
     shared_ptr<int> ptr2;
@@ -36,11 +36,23 @@ sharedfunct(){
     cout << "ptr1: " << ptr1 << " =====> " << *ptr1 << endl;
     cout << "ptr2: " << ptr2 << " =====> " << *ptr2 << endl;
     cout << "ptr3: " << ptr3 << " =====> " << *ptr3 << endl;
+    cout << endl;
+}
+
+substrFunct(){
+shared_ptr<string> kot = make_shared<string>("Mireczek");
+shared_ptr<string> pies = make_shared<string>("Maniek");
+cout << "Imie kota: " << *kot << endl;
+cout << "Imie psa: " << *pies << endl;
+cout << kot->substr(0,4) << endl; //wyswietlenie od 0 literki do 4 literki z ,,kot,,..
+cout << pies->substr(0,5) << endl; //wyswietlenie od 0 literki do 5 literki z ,,pies,,..
 }
 
 
 int main(){
-    sharedfunct();
+    //wspoldzielone..
+    sharedFunct();
+    substrFunct();
 
     return 0;
 }
