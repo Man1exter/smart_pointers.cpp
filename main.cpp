@@ -27,8 +27,15 @@
 using namespace std;
 
 sharedfunct(){
+    // metoda nr.1 z funkcja make_shared..
     shared_ptr<int> ptr1 = make_shared<int>(10);
     shared_ptr<int> ptr2;
+    ptr2.reset(new int(20));
+    shared_ptr<int> ptr3(new int(30));
+
+    cout << "ptr1: " << ptr1 << " =====> " << *ptr1 << endl;
+    cout << "ptr2: " << ptr2 << " =====> " << *ptr2 << endl;
+    cout << "ptr3: " << ptr3 << " =====> " << *ptr3 << endl;
 }
 
 
