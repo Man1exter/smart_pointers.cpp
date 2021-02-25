@@ -92,6 +92,23 @@ newValueFunct(){
     });
 }
 
+wspFunct(){
+
+    cout << endl;
+    cout << endl;
+
+    int* num = new int(11);
+    shared_ptr<int> exe1(num);
+    shared_ptr<int> exe2(num); // na koniec beda chcialy zwolnic pamiec....i nie wyjdzie
+
+    cout << exe1.use_count() << " =-=-=-=> " << exe2.use_count() << endl; // bedzie 1 i 1 w rezultacie a potem....BLAD..
+
+    cout << endl;
+    cout << endl;
+
+    // poprawiona wersja bez bledu.. u gory dla przestrogi..
+    
+}
 
 int main(){
     //wspoldzielone..
@@ -99,6 +116,8 @@ int main(){
     substrFunct();
     deleteFunct();
     newValueFunct();
+
+    wspFunct();
 
     return 0;
 }
