@@ -26,6 +26,18 @@
 
 using namespace std;
 
+// template<typename T>
+// using uPtr = unique_ptr< T , void (*) (T*) >;
+
+// class A{
+//     public:
+//      string name;
+//      shared_ptr<A> Lider;
+//      vector<weak_ptr<A>> Kierownik;
+//      A(const string& n, shared_ptr<A> s=nullptr) : name(n), Lider(s) {}
+//      ~A(){ cout << name << endl; }
+// } // do slabych inteligentnych wskanzikow, przykladowy szablon z klasa oraz podanymi werami..
+
 sharedFunct(){
     // metoda nr.1 z funkcja make_shared..
     shared_ptr<int> ptr1 = make_shared<int>(10);
@@ -52,6 +64,32 @@ cout << endl;
 cout << "ile wskaznikow wskauje na kota? ====> " << kot.use_count() << endl;
 cout << "ile wskaznikow wskazuje na psa? ====> " << pies.use_count() << endl;
 
+cout << endl;
+}
+
+deleteFunct(){
+    shared_ptr<int[]> temp(new int[100],[](int* p){
+        cout << p << " " << *p << endl;
+        delete[]p;
+    });
+}
+
+newValueFunct(){
+    shared_ptr<double> ex3(new double(13.75),
+    [](double* p){
+        cout << "usuwana wartosc ======> " << *p << endl;
+        cout << "usunieto =====> " << *p << endl;
+        delete p;
+    });
+    cout << endl;
+    cout << endl;
+
+    shared_ptr<double> ex4(new double(193.33),
+    [](double* n){
+        cout << "usuwana wartosc ======> " << *n << endl;
+        cout << "usunieto =====> " << *n << endl;
+        delete n;
+    });
 }
 
 
@@ -59,6 +97,8 @@ int main(){
     //wspoldzielone..
     sharedFunct();
     substrFunct();
+    deleteFunct();
+    newValueFunct();
 
     return 0;
 }
