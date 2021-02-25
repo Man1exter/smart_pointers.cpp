@@ -113,6 +113,23 @@ wspFunct(){
     cout << prz1.use_count() << " =-=-=-=> " << prz2.use_count() << endl; // bedzie 2 i 2 w rezultacie a potem....BEZ JAKIEGOKOLWIEK BLEDU..
 }
 
+// unique_ptr - tworzy wskaznik(wylaczony)i potrafi zwolnic obiekty wskazywane gdy zostanie sam usuniety..
+
+firstUnique(){
+    cout << endl;
+    cout << endl;
+
+    unique_ptr<int> uptr(new int(12345));
+    cout << "uptr przekazywany z 1 funkcji =====> " << *uptr << endl; // tutaj znika i zwalnia pamiec..
+}
+
+secondUnique(){
+    unique_ptr<int> uptr2 = make_unique<int>(123456789);
+    cout << "uptr2 przekazywany z 2 funkcji =====> " << *uptr2 << endl;
+    uptr2.release();
+    cout << "z 2 funkcji juz zwolniona pamiec z wartosci =====> " << *uptr2 << endl;
+}
+
 int main(){
     //wspoldzielone..
     sharedFunct();
@@ -121,6 +138,9 @@ int main(){
     newValueFunct();
 
     wspFunct();
+
+    firstUnique();
+    secondUnique();
 
     return 0;
 }
