@@ -46,6 +46,12 @@ cout << "Imie kota: " << *kot << endl;
 cout << "Imie psa: " << *pies << endl;
 cout << kot->substr(0,4) << endl; //wyswietlenie od 0 literki do 4 literki z ,,kot,,..
 cout << pies->substr(0,5) << endl; //wyswietlenie od 0 literki do 5 literki z ,,pies,,..
+
+cout << endl;
+
+cout << "ile wskaznikow wskauje na kota? ====> " << kot.use_count() << endl;
+cout << "ile wskaznikow wskazuje na psa? ====> " << pies.use_count() << endl;
+
 }
 
 
