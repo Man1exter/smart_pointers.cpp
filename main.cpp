@@ -107,7 +107,10 @@ wspFunct(){
     cout << endl;
 
     // poprawiona wersja bez bledu.. u gory dla przestrogi..
-    
+    int* yexe1= new int(1111);
+    shared_ptr<int> prz1(yexe1);
+    shared_ptr<int> prz2(prz1);
+    cout << prz1.use_count() << " =-=-=-=> " << prz2.use_count() << endl; // bedzie 2 i 2 w rezultacie a potem....BEZ JAKIEGOKOLWIEK BLEDU..
 }
 
 int main(){
