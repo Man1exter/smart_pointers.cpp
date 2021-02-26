@@ -127,7 +127,17 @@ secondUnique(){
     unique_ptr<int> uptr2 = make_unique<int>(123456789);
     cout << "uptr2 przekazywany z 2 funkcji =====> " << *uptr2 << endl;
     uptr2.release();
-    cout << "z 2 funkcji juz zwolniona pamiec z wartosci =====> " << *uptr2 << endl;
+    cout << "z 2 funkcji juz zwolniona pamiec z wartosci =====> " << *uptr2 << " JUZ BRAK " << endl;
+
+    cout << endl;
+    cout << endl;
+}
+
+thirdUnique(){
+    auto theLambda = [](int* p){
+        cout << *p << " ====> " << p << endl;
+    };
+    unique_ptr<int,decltype(theLambda)> uptr(new int(35), theLambda);
 }
 
 int main(){
@@ -141,6 +151,7 @@ int main(){
 
     firstUnique();
     secondUnique();
+    thirdUnique();
 
     return 0;
 }
