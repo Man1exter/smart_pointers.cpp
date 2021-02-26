@@ -133,11 +133,30 @@ secondUnique(){
     cout << endl;
 }
 
-thirdUnique(){
-    auto theLambda = [](int* p){
-        cout << *p << " ====> " << p << endl;
-    };
-    unique_ptr<int,decltype(theLambda)> uptr(new int(35), theLambda);
+// thirdUnique(){
+//     auto theLambda = [](int* p){
+//         cout << *p << " ====> " << p << endl;
+//     };
+//     unique_ptr<int,decltype(theLambda)> uptr(new int(35), theLambda);
+// }                                                                       // z wykorzystaniem szblonu zawartego na samej gorze..
+// uPtr<float>f(new float(5),[](float*p){
+//   cout << *p << endl; delete p;
+//})
+
+weakFunct(){
+    shared_ptr<string> boss = make_shared<string>("Man1exter");
+    shared_ptr<string> peace = make_shared<string>("Kaselen");
+
+    cout << *boss << " =====> " << boss << endl;
+    cout << *peace << " =====> " << peace << endl;
+
+    // z wykorzystaniem klasy..
+    // Lider -> Kierownik.push_back(Lider);  // + dopisanie do kaselen po przecinku(Lider/Kierownik)
+    // cout << Kierownik.use_count() << endl;
+    // for(auto& ele: Lider->Kierownik){
+    //    if(!ele.expired()) cout << ele.lock()->name << endl;
+    //        else cout << "---------" << endl;
+    //}
 }
 
 int main(){
@@ -151,7 +170,9 @@ int main(){
 
     firstUnique();
     secondUnique();
-    thirdUnique();
+    //thirdUnique();
+
+    weakFunct();
 
     return 0;
 }
